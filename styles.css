@@ -4,7 +4,6 @@
   --paper: #f7f3ec;
   --card: #ffffff;
   --line: #e3dccf;
-  --gold: #b8860b;
   --t1: #1f6b54;
   --t1bg: #e6f1ec;
   --t2: #b5651d;
@@ -121,11 +120,6 @@ h1 {
   border-color: var(--red);
   background: rgba(214, 72, 59, 0.15);
 }
-.legend .star {
-  color: var(--gold);
-  font-weight: 700;
-}
-
 .tier {
   margin-bottom: 30px;
   break-inside: avoid;
@@ -246,31 +240,6 @@ h1 {
   margin-top: 3px;
   min-height: 30px;
 }
-.badges {
-  min-height: 20px;
-  margin-top: 4px;
-  display: flex;
-  gap: 5px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-.badge {
-  font-size: 10px;
-  font-weight: 700;
-  padding: 2px 7px;
-  border-radius: 20px;
-  letter-spacing: 0.02em;
-}
-.badge.core {
-  background: #fbf1d6;
-  color: var(--gold);
-  border: 1px solid #ecd9a3;
-}
-.badge.added {
-  background: #eef1f4;
-  color: #62718a;
-  border: 1px solid #dde3ea;
-}
 .marks {
   display: flex;
   gap: 8px;
@@ -346,4 +315,96 @@ footer {
   .no-print {
     display: none;
   }
+  /* A printout should always show the full sheet, even mid-quiz. */
+  .reveal-btn {
+    display: none !important;
+  }
+  .ic.slot-hidden,
+  .label.slot-hidden,
+  .desc.slot-hidden {
+    display: block !important;
+  }
+}
+
+/* ===== Test Type control ===== */
+.testbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 14px;
+  margin: 0 0 26px;
+}
+.testbar-label {
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+}
+.testbar-hint {
+  font-size: 12.5px;
+  color: var(--muted);
+}
+.test-toggles {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 4px;
+}
+.test-toggle {
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  background: transparent;
+  border: 0;
+  border-radius: 999px;
+  padding: 7px 14px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.test-toggle:hover {
+  color: var(--ink);
+  background: var(--paper);
+}
+.test-toggle.active {
+  color: #fff;
+  background: var(--t1);
+}
+
+/* ===== Hidden slot + reveal button ===== */
+.slot-hidden {
+  display: none !important;
+}
+.reveal-btn {
+  font-family: inherit;
+  font-weight: 700;
+  color: var(--t1);
+  background: var(--t1bg);
+  border: 1.5px dashed var(--t1);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.reveal-btn:hover {
+  background: var(--t1);
+  color: #fff;
+}
+.reveal-btn[data-slot="icon"] {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  font-size: 11px;
+  padding: 0;
+}
+.reveal-btn[data-slot="name"] {
+  margin-top: 10px;
+  font-size: 13px;
+  padding: 5px 12px;
+}
+.reveal-btn[data-slot="desc"] {
+  margin-top: 6px;
+  font-size: 11px;
+  padding: 4px 10px;
 }
