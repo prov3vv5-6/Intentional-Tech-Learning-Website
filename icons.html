@@ -31,6 +31,29 @@
         </div>
       </header>
 
+      <div class="scoreboard no-print" id="scoreboard">
+        <div class="sb-grid">
+          <span class="sb-cell sb-corner">Score</span>
+          <span class="sb-cell sb-head" data-col="icon">Icon</span>
+          <span class="sb-cell sb-head" data-col="name">Icon Name</span>
+          <span class="sb-cell sb-head" data-col="desc">Icon Description</span>
+          <span class="sb-cell sb-head sb-total-head">Total</span>
+
+          <span class="sb-cell sb-rowlabel">Points</span>
+          <span class="sb-cell sb-score" data-col="icon">0 <small>/ 48</small></span>
+          <span class="sb-cell sb-score" data-col="name">0 <small>/ 48</small></span>
+          <span class="sb-cell sb-score" data-col="desc">0 <small>/ 48</small></span>
+          <span class="sb-cell sb-total">0 <small>/ 144</small></span>
+        </div>
+        <div class="sb-footer">
+          <span class="sb-feedback" id="sb-feedback"
+            >Pick a Test Type below, then tap G / Y / R on each card to score
+            yourself.</span
+          >
+          <button type="button" class="sb-reset" id="sb-reset">Reset</button>
+        </div>
+      </div>
+
       <div class="legend">
         <span style="font-weight: 700; font-size: 13px">How to mark:</span>
         <span class="grp"
