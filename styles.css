@@ -35,6 +35,34 @@ body {
   padding: 32px 28px 56px;
 }
 
+.topnav {
+  margin-bottom: 18px;
+}
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 6px 12px 6px 8px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+.back-link:hover {
+  color: var(--t1);
+  border-color: var(--t1);
+}
+.back-link svg {
+  transition: transform 0.15s;
+}
+.back-link:hover svg {
+  transform: translateX(-2px);
+}
+
 header.head {
   border-bottom: 3px solid var(--ink);
   padding-bottom: 18px;
