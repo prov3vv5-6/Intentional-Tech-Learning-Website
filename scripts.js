@@ -188,6 +188,30 @@
     });
   }
 
+  // ---------- Shuffle ----------
+  // Fisher-Yates shuffle of an array (returns a new array).
+  function shuffled(arr) {
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  // Reorder the cards inside each tier's grid independently. Card DOM nodes
+  // keep their own state and listeners, so scores and any active test survive.
+  const shuffleBtn = document.getElementById("shuffle-btn");
+  if (shuffleBtn) {
+    shuffleBtn.addEventListener("click", () => {
+      document.querySelectorAll(".grid").forEach((grid) => {
+        const items = Array.from(grid.children);
+        // Re-append in a new random order; appendChild moves existing nodes.
+        shuffled(items).forEach((card) => grid.appendChild(card));
+      });
+    });
+  }
+
   // ---------- Init ----------
   updateScore();
 })();
