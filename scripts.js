@@ -8,7 +8,7 @@
 (function () {
   // Each test type maps to the element it hides and the reveal-button label.
   const SLOTS = {
-    icon: { selector: ".card-top svg", label: "Icon" },
+    icon: { selector: ".card-top", label: "Icon" },
     name: { selector: ".label", label: "Icon Name" },
     desc: { selector: ".desc", label: "Icon Description" },
   };
