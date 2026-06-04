@@ -88,31 +88,6 @@ h1 {
   max-width: 62ch;
 }
 
-.meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px 26px;
-  margin: 18px 0 6px;
-  font-size: 14px;
-}
-.meta .f {
-  display: flex;
-  align-items: flex-end;
-  gap: 8px;
-}
-.meta .f b {
-  font-weight: 600;
-}
-.meta .line {
-  display: inline-block;
-  min-width: 150px;
-  border-bottom: 1.5px solid var(--ink);
-  height: 1.1em;
-}
-.meta .line.sm {
-  min-width: 80px;
-}
-
 .legend {
   display: flex;
   flex-wrap: wrap;
