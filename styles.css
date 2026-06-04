@@ -592,6 +592,89 @@ body.scoring-active .m:hover {
   }
 }
 
+/* ===== Learning Resources home ===== */
+.resource-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 26px;
+}
+/* Each card sets its own accent via these vars; add a variant class
+   (e.g. .rc-gestures) to a new card to give it a different color. */
+.resource-card {
+  --accent: var(--t1);
+  --accent-bg: var(--t1bg);
+  display: flex;
+  flex-direction: column;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+}
+.resource-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(35, 32, 27, 0.1);
+  border-color: var(--accent);
+}
+.resource-card:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.rc-art {
+  height: 168px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent-bg);
+  border-bottom: 1px solid var(--line);
+}
+.rc-art svg {
+  width: 116px;
+  height: 116px;
+  color: var(--accent);
+}
+.rc-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  padding: 18px 20px 22px;
+}
+.rc-body h2 {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 600;
+  font-size: 22px;
+  margin: 0;
+  color: var(--accent);
+}
+.rc-body p {
+  margin: 0;
+  flex: 1;
+  font-size: 14px;
+  color: var(--muted);
+}
+.rc-go {
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--accent);
+}
+.resource-card:hover .rc-go {
+  text-decoration: underline;
+}
+/* Accent variants — cycle through these for future resources. */
+.rc-gestures {
+  --accent: var(--t3);
+  --accent-bg: var(--t3bg);
+}
+.rc-alt {
+  --accent: var(--t2);
+  --accent-bg: var(--t2bg);
+}
+
 /* ===== Touch Gestures page ===== */
 /* Progress scoreboard (simpler than the icon sheet's grid) */
 .gb-row {
