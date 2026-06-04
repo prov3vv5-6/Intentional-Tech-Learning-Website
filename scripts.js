@@ -15,13 +15,26 @@
   const POINTS = { g: 1, y: 0.5, r: 0 }; // green / yellow / red
   const TYPES = ["icon", "name", "desc"];
 
+  // Difficulty controls how much of each card is hidden. The selected test
+  // type is always hidden; harder modes hide an extra slot for less context.
+  //   easy   → just the test-type slot
+  //   medium → test-type slot + a second slot
+  //   hard   → test-type slot + a (different) second slot
+  const DIFFICULTY_EXTRA = {
+    icon: { easy: [], medium: ["name"], hard: ["desc"] },
+    name: { easy: [], medium: ["icon"], hard: ["desc"] },
+    desc: { easy: [], medium: ["icon"], hard: ["name"] },
+  };
+
   const cards = Array.from(document.querySelectorAll(".card"));
   const cardCount = cards.length;
-  const toggles = document.querySelectorAll(".test-toggle");
+  const toggles = document.querySelectorAll(".test-toggle:not(.diff-toggle)");
+  const diffToggles = document.querySelectorAll(".diff-toggle");
 
   // state[i][type] = "g" | "y" | "r" | null  — one mark per card per type.
   const state = cards.map(() => ({ icon: null, name: null, desc: null }));
   let activeType = null;
+  let difficulty = "easy";
 
   // ---------- Reveal / hide slot ----------
   function clearTest() {
@@ -31,26 +44,32 @@
       .forEach((el) => el.classList.remove("slot-hidden"));
   }
 
-  function applyTest(type) {
-    clearTest();
-    const slot = SLOTS[type];
-    cards.forEach((card) => {
-      const el = card.querySelector(slot.selector);
-      if (!el) return;
-      el.classList.add("slot-hidden");
+  // Hide one slot on a card and drop a reveal button in its place.
+  function hideSlot(card, slotType) {
+    const slot = SLOTS[slotType];
+    const el = card.querySelector(slot.selector);
+    if (!el) return;
+    el.classList.add("slot-hidden");
 
-      const btn = document.createElement("button");
-      btn.type = "button";
-      btn.className = "reveal-btn";
-      btn.dataset.slot = type;
-      btn.textContent = slot.label;
-      btn.title = "Click to reveal";
-      btn.addEventListener("click", () => {
-        el.classList.remove("slot-hidden");
-        btn.remove();
-      });
-      el.parentNode.insertBefore(btn, el);
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "reveal-btn";
+    btn.dataset.slot = slotType;
+    btn.textContent = slot.label;
+    btn.title = "Click to reveal";
+    btn.addEventListener("click", () => {
+      el.classList.remove("slot-hidden");
+      btn.remove();
     });
+    el.parentNode.insertBefore(btn, el);
+  }
+
+  function applyTest() {
+    clearTest();
+    if (!activeType) return;
+    // Always hide the selected test type, plus any extra slots for difficulty.
+    const slots = [activeType, ...DIFFICULTY_EXTRA[activeType][difficulty]];
+    cards.forEach((card) => slots.forEach((s) => hideSlot(card, s)));
   }
 
   // ---------- Marks (G / Y / R) ----------
@@ -162,8 +181,7 @@
     activeType = type;
     toggles.forEach((b) => b.classList.toggle("active", b.dataset.type === type));
     document.body.classList.toggle("scoring-active", type !== null);
-    if (type) applyTest(type);
-    else clearTest();
+    applyTest();
     updateActiveColumn(type);
     renderAllMarks(type);
     updateScore();
@@ -174,6 +192,19 @@
       const type = toggle.dataset.type;
       setActive(activeType === type ? null : type); // click active to turn off
     });
+  });
+
+  // ---------- Difficulty toggle ----------
+  function setDifficulty(level) {
+    difficulty = level;
+    diffToggles.forEach((b) =>
+      b.classList.toggle("active", b.dataset.level === level)
+    );
+    applyTest(); // re-hide slots for the new difficulty if a test is active
+  }
+
+  diffToggles.forEach((toggle) => {
+    toggle.addEventListener("click", () => setDifficulty(toggle.dataset.level));
   });
 
   // ---------- Reset ----------
