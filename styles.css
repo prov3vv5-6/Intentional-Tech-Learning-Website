@@ -935,3 +935,130 @@ body.scoring-active .m:hover {
   border-color: var(--t1);
   color: var(--t1);
 }
+
+/* ===== Spot the Scam page ===== */
+.scam-card {
+  align-items: stretch;
+  text-align: left;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.scam-card.correct {
+  border-color: var(--green);
+  box-shadow: 0 0 0 2px rgba(31, 157, 87, 0.18);
+}
+.scam-card.incorrect {
+  border-color: var(--red);
+  box-shadow: 0 0 0 2px rgba(214, 72, 59, 0.18);
+}
+.scam-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.scam-chan svg {
+  width: 22px;
+  height: 22px;
+  color: var(--muted);
+  display: block;
+}
+.scam-type {
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+}
+.scam-msg {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px 14px;
+}
+.scam-from {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  margin-bottom: 6px;
+  word-break: break-word;
+}
+.scam-body {
+  font-size: 14px;
+  color: var(--ink);
+  line-height: 1.5;
+  word-break: break-word;
+}
+.scam-answers {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+.scam-btn {
+  flex: 1;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 9px 10px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.scam-btn:hover:not(:disabled) {
+  border-color: var(--ink);
+}
+.scam-btn:disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+/* The answer the user picked, and the true answer, after answering. */
+.scam-btn.chosen {
+  opacity: 1;
+}
+.scam-card.correct .scam-btn.chosen {
+  background: var(--green);
+  border-color: var(--green);
+  color: #fff;
+}
+.scam-card.incorrect .scam-btn.chosen {
+  background: var(--red);
+  border-color: var(--red);
+  color: #fff;
+}
+.scam-btn.is-truth {
+  opacity: 1;
+  border-color: var(--green);
+  color: var(--green);
+}
+.scam-card.correct .scam-btn.is-truth {
+  /* already shown via .chosen */
+  border-color: var(--green);
+}
+.scam-explain {
+  display: none;
+  margin-top: 12px;
+  padding-top: 11px;
+  border-top: 1px dashed var(--line);
+}
+.scam-card.answered .scam-explain {
+  display: block;
+}
+.scam-verdict {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.scam-verdict.ok {
+  color: var(--green);
+}
+.scam-verdict.bad {
+  color: var(--red);
+}
+.scam-why {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
+}

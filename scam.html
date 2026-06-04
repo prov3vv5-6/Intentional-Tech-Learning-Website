@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Spot the Scam</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Libre+Franklin:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <nav class="topnav no-print">
+        <a class="back-link" href="index.html">
+          <svg
+            width="18"
+            height="18"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="m15 18-6-6 6-6" />
+          </svg>
+          <span>Home</span>
+        </a>
+      </nav>
+
+      <header class="head">
+        <div class="kicker">Digital Literacy · Online Safety</div>
+        <h1>Can You Spot the Scam?</h1>
+        <p class="sub">
+          Scammers target seniors with fake texts, emails, pop-ups, and phone
+          calls. Read each one, decide if it's safe or a scam, then learn the
+          warning signs. When in doubt, slow down — real companies never rush you.
+        </p>
+      </header>
+
+      <div class="scoreboard no-print" id="scoreboard">
+        <div class="gb-row">
+          <span class="gb-label">Spotted correctly</span>
+          <span class="gb-count"><span id="gb-done">0</span> <small>/ 8</small></span>
+        </div>
+        <div class="sb-footer">
+          <span class="sb-feedback" id="sb-feedback"
+            >Read each message and choose “Looks Safe” or “It's a Scam.”</span
+          >
+          <button type="button" class="sb-reset" id="sb-reset">Reset</button>
+        </div>
+      </div>
+
+      <div class="legend">
+        <span style="font-weight: 700; font-size: 13px">How it works:</span>
+        <span class="grp">Read the message</span>
+        <span class="grp">Pick <b>Looks Safe</b> or <b>It's a Scam</b></span>
+        <span class="grp">Read why — learn the warning signs</span>
+      </div>
+
+      <section class="tier tier1">
+        <div class="tier-head">
+          <span class="tier-num">1</span>
+          <div>
+            <h2>Texts &amp; Emails</h2>
+            <p>The messages that land on your phone and in your inbox.</p>
+          </div>
+          <span class="tier-count">4 examples</span>
+        </div>
+        <div class="grid gesture-grid">
+          <!-- 1: USPS fee — scam -->
+          <div class="card scam-card" data-answer="scam">
+            <div class="scam-head">
+              <span class="scam-chan">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z" />
+                </svg>
+              </span>
+              <span class="scam-type">Text message</span>
+            </div>
+            <div class="scam-msg">
+              <div class="scam-from">+1 (402) 555-0148</div>
+              <div class="scam-body">
+                USPS: Your package is on hold. A $1.99 redelivery fee is required.
+                Pay now: http://usps-redeliver.xyz/pay
+              </div>
+            </div>
+            <div class="scam-answers" data-answers>
+              <button type="button" class="scam-btn" data-choice="safe">Looks Safe</button>
+              <button type="button" class="scam-btn" data-choice="scam">It's a Scam</button>
+            </div>
+            <div class="scam-explain" data-explain>
+              <span class="scam-verdict" data-verdict></span>
+              <span class="scam-why">
+                Real carriers don't ask for a fee by text with a link — and the
+                web address isn't usps.com. The urgency is the trick. Don't tap it.
+              </span>
+            </div>
+          </div>
+
+          <!-- 2: Amazon locked — scam -->
+          <div class="card scam-card" data-answer="scam">
+            <div class="scam-head">
+              <span class="scam-chan">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="2" y="4" width="20" height="16" rx="2" />
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                </svg>
+              </span>
+              <span class="scam-type">Email</span>
+            </div>
+            <div class="scam-msg">
+              <div class="scam-from">Amazon Security &lt;no-reply@amaz0n-verify.com&gt;</div>
+              <div class="scam-body">
+                Your account has been locked. Verify your details within 24 hours
+                or your account will be permanently deleted. [Verify Now]
+              </div>
+            </div>
+            <div class="scam-answers" data-answers>
+              <button type="button" class="scam-btn" data-choice="safe">Looks Safe</button>
+              <button type="button" class="scam-btn" data-choice="scam">It's a Scam</button>
+            </div>
+            <div class="scam-explain" data-explain>
+              <span class="scam-verdict" data-verdict></span>
+              <span class="scam-why">
+                “Act within 24 hours or else” is classic pressure, and the sender
+                is “amaz0n-verify.com,” not amazon.com. Don't click — open the
+                Amazon app or type amazon.com yourself.
+              </span>
+            </div>
+          </div>
+
+          <!-- 3: Bank statement ready — safe -->
+          <div class="card scam-card" data-answer="safe">
+            <div class="scam-head">
+              <span class="scam-chan">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="2" y="4" width="20" height="16" rx="2" />
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                </svg>
+              </span>
+              <span class="scam-type">Email</span>
+            </div>
+            <div class="scam-msg">
+              <div class="scam-from">First Community Bank</div>
+              <div class="scam-body">
+                Your monthly statement is ready. To view it, log in to your account
+                through our app or website. We'll never ask for your password.
+              </div>
+            </div>
+            <div class="scam-answers" data-answers>
+              <button type="button" class="scam-btn" data-choice="safe">Looks Safe</button>
+              <button type="button" class="scam-btn" data-choice="scam">It's a Scam</button>
+            </div>
+            <div class="scam-explain" data-explain>
+              <span class="scam-verdict" data-verdict></span>
+              <span class="scam-why">
+                No link to click, no urgency, and it tells you to log in through the
+                bank's own app or site. That's how legitimate notices work.
+              </span>
+            </div>
+          </div>
+
+          <!-- 4: Verification code — safe -->
+          <div class="card scam-card" data-answer="safe">
+            <div class="scam-head">
+              <span class="scam-chan">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z" />
+                </svg>
+              </span>
+              <span class="scam-type">Text message</span>
+            </div>
+            <div class="scam-msg">
+              <div class="scam-from">VERIFY</div>
+              <div class="scam-body">
+                Your verification code is 472913. Don't share this code with anyone.
+              </div>
+            </div>
+            <div class="scam-answers" data-answers>
+              <button type="button" class="scam-btn" data-choice="safe">Looks Safe</button>
+              <button type="button" class="scam-btn" data-choice="scam">It's a Scam</button>
+            </div>
+            <div class="scam-explain" data-explain>
+              <span class="scam-verdict" data-verdict></span>
+              <span class="scam-why">
+                A code you just requested is normal and safe to use yourself — but
+                never read or forward it to anyone who calls or messages asking for it.
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="tier tier2">
+        <div class="tier-head">
+          <span class="tier-num">2</span>
+          <div>
+            <h2>Pop-ups &amp; Phone Calls</h2>
+            <p>What shows up on your screen or comes through on a call.</p>
+          </div>
+          <span class="tier-count">4 examples</span>
+        </div>
+        <div class="grid gesture-grid">
+          <!-- 5: Virus pop-up — scam -->
+          <div class="card scam-card" data-answer="scam">
+            <div class="scam-head">
+              <span class="scam-chan">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
+                  <path d="M12 9v4" />
+                  <path d="M12 17h.01" />
+                </svg>
+              </span>
+              <span class="scam-type">Pop-up window</span>
+            </div>
+            <div class="scam-msg">
+              <div class="scam-from">⚠ Security Alert</div>
+              <div class="scam-body">
+                Your computer is infected with 5 viruses! Call Microsoft Support
+                now at 1-800-555-0190 to remove them immediately.
+              </div>
+            </div>
+            <div class="scam-answers" data-answers>
+              <button type="button" class="scam-btn" data-choice="safe">Looks Safe</button>
+              <button type="button" class="scam-btn" data-choice="scam">It's a Scam</button>
+            </div>
+            <div class="scam-explain" data-explain>
+              <span class="scam-verdict" data-verdict></span>
+              <span class="scam-why">
+                Real virus warnings never tell you to call a phone number. This is a
+                fake pop-up. Don't call — close the window or restart your browser.
+              </span>
+            </div>
+          </div>
+
+          <!-- 6: IRS gift cards — scam -->
+          <div class="card scam-card" data-answer="scam">
+            <div class="scam-head">
+              <span class="scam-chan">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" />
+                </svg>
+              </span>
+              <span class="scam-type">Phone call</span>
+            </div>
+            <div class="scam-msg">
+              <div class="scam-from">Unknown caller</div>
+              <div class="scam-body">
+                “This is the IRS. You owe back taxes. Pay immediately with gift
+                cards or a warrant will be issued for your arrest today.”
+              </div>
+            </div>
+            <div class="scam-answers" data-answers>
+              <button type="button" class="scam-btn" data-choice="safe">Looks Safe</button>
+              <button type="button" class="scam-btn" data-choice="scam">It's a Scam</button>
+            </div>
+            <div class="scam-explain" data-explain>
+              <span class="scam-verdict" data-verdict></span>
+              <span class="scam-why">
+                Government agencies never demand gift cards and never threaten
+                arrest by phone. Hang up — it's a scam.
+              </span>
+            </div>
+          </div>
+
+          <!-- 7: Pharmacy reminder — safe -->
+          <div class="card scam-card" data-answer="safe">
+            <div class="scam-head">
+              <span class="scam-chan">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" />
+                </svg>
+              </span>
+              <span class="scam-type">Phone call</span>
+            </div>
+            <div class="scam-msg">
+              <div class="scam-from">Corner Pharmacy</div>
+              <div class="scam-body">
+                “Hello, this is a reminder that your prescription is ready for
+                pickup anytime this week. No need to call back. Thank you!”
+              </div>
+            </div>
+            <div class="scam-answers" data-answers>
+              <button type="button" class="scam-btn" data-choice="safe">Looks Safe</button>
+              <button type="button" class="scam-btn" data-choice="scam">It's a Scam</button>
+            </div>
+            <div class="scam-explain" data-explain>
+              <span class="scam-verdict" data-verdict></span>
+              <span class="scam-why">
+                It only reminds you to pick something up and asks for nothing — no
+                payment, no personal information. That's a normal reminder.
+              </span>
+            </div>
+          </div>
+
+          <!-- 8: Bank fraud line — safe -->
+          <div class="card scam-card" data-answer="safe">
+            <div class="scam-head">
+              <span class="scam-chan">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" />
+                </svg>
+              </span>
+              <span class="scam-type">Phone call</span>
+            </div>
+            <div class="scam-msg">
+              <div class="scam-from">Your bank's fraud line</div>
+              <div class="scam-body">
+                “We noticed an unusual charge. We'll never ask for your PIN or
+                password — please call the number on the back of your card to confirm.”
+              </div>
+            </div>
+            <div class="scam-answers" data-answers>
+              <button type="button" class="scam-btn" data-choice="safe">Looks Safe</button>
+              <button type="button" class="scam-btn" data-choice="scam">It's a Scam</button>
+            </div>
+            <div class="scam-explain" data-explain>
+              <span class="scam-verdict" data-verdict></span>
+              <span class="scam-why">
+                It tells you to call the number on your own card and says it will
+                never ask for your PIN. That's how a real bank behaves.
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <span>When in doubt, don't click or call back — contact the company using a number you trust.</span>
+        <span>8 examples · 2 groups</span>
+      </footer>
+    </div>
+    <script src="scam.js"></script>
+  </body>
+</html>
