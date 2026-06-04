@@ -591,3 +591,263 @@ body.scoring-active .m:hover {
     color: var(--red) !important;
   }
 }
+
+/* ===== Touch Gestures page ===== */
+/* Progress scoreboard (simpler than the icon sheet's grid) */
+.gb-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+.gb-label {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+}
+.gb-count {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 600;
+  font-size: 26px;
+  color: var(--t1);
+}
+.gb-count small {
+  font-family: "Libre Franklin", system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+/* Legend swatches reused for try / done states */
+.swatch.try {
+  border-color: var(--muted);
+  background: var(--paper);
+}
+.swatch.ok {
+  border-color: var(--green);
+  background: rgba(31, 157, 87, 0.16);
+}
+.legend-hint {
+  font-size: 12.5px;
+  color: var(--muted);
+  margin-left: auto;
+}
+
+/* Wider cards so each practice zone has room */
+.gesture-grid {
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+.gesture-card {
+  justify-content: flex-start;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.gesture-card.done {
+  border-color: var(--green);
+  box-shadow: 0 0 0 2px rgba(31, 157, 87, 0.18);
+}
+.gesture-icon {
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 4px;
+}
+.gesture-card.done .gesture-icon .ic {
+  color: var(--green);
+}
+
+/* The shaded practice zone */
+.gz {
+  position: relative;
+  width: 100%;
+  min-height: 124px;
+  margin-top: 12px;
+  border: 1.5px dashed var(--line);
+  border-radius: 12px;
+  background: var(--t1bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+.gesture-card.done .gz {
+  border-style: solid;
+  border-color: var(--green);
+  background: rgba(31, 157, 87, 0.1);
+}
+.gz-hint {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--t1);
+  pointer-events: none;
+  text-align: center;
+  padding: 0 10px;
+}
+
+.gesture-status {
+  margin-top: 11px;
+  padding-top: 11px;
+  border-top: 1px dashed var(--line);
+  width: 100%;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+}
+.gesture-status.done {
+  color: var(--green);
+}
+
+/* Tap */
+.gz-target {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--t1);
+  opacity: 0.85;
+  animation: tap-pulse 1.8s ease-in-out infinite;
+}
+[data-zone="tap"] .gz-hint {
+  position: absolute;
+  top: 12px;
+}
+@keyframes tap-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.12);
+  }
+}
+.gesture-card.done [data-zone="tap"] .gz-target {
+  animation: none;
+  background: var(--green);
+}
+
+/* Scroll */
+.gz-scroll {
+  display: block;
+  overflow-y: auto;
+  align-items: stretch;
+  touch-action: pan-y;
+}
+.scroll-inner {
+  padding: 14px 16px;
+}
+.scroll-inner p {
+  margin: 0 0 46px;
+  font-size: 13px;
+  color: var(--muted);
+  text-align: center;
+}
+.scroll-inner p.scroll-goal {
+  margin-bottom: 8px;
+  font-weight: 700;
+  color: var(--t1);
+}
+
+/* Swipe */
+.gz-swipe {
+  touch-action: pan-y;
+}
+.swipe-card {
+  width: 78%;
+  padding: 22px 14px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  text-align: center;
+  cursor: grab;
+  box-shadow: 0 2px 8px rgba(35, 32, 27, 0.08);
+  touch-action: pan-y;
+}
+.swipe-card:active {
+  cursor: grabbing;
+}
+
+/* Touch & Hold */
+.hold-target {
+  position: relative;
+  width: 130px;
+  height: 64px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--t1);
+  color: #fff;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  overflow: hidden;
+  touch-action: none;
+}
+.hold-fill {
+  position: absolute;
+  inset: 0;
+  width: 0;
+  background: rgba(255, 255, 255, 0.32);
+}
+.hold-target.holding .hold-fill {
+  width: 100%;
+  transition: width 0.7s linear;
+}
+.hold-text {
+  position: relative;
+}
+.hold-target.held {
+  background: var(--green);
+}
+
+/* Double-tap & pinch zoom boxes */
+.gz-zoom {
+  touch-action: none;
+}
+.zoom-box {
+  width: 88px;
+  height: 88px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--t2) 0%, var(--t1) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: scale(1);
+  transition: transform 0.2s ease;
+  will-change: transform;
+}
+.zoom-box .gz-hint {
+  color: #fff;
+  font-size: 11px;
+}
+.zoom-box.zoomed {
+  transform: scale(1.6);
+}
+.pinch-fallback {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  display: flex;
+  gap: 6px;
+}
+.pinch-fallback button {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  cursor: pointer;
+}
+.pinch-fallback button:hover {
+  border-color: var(--t1);
+  color: var(--t1);
+}

@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>Touch Gesture Practice</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Libre+Franklin:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <nav class="topnav no-print">
+        <a class="back-link" href="index.html">
+          <svg
+            width="18"
+            height="18"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="m15 18-6-6 6-6" />
+          </svg>
+          <span>Home</span>
+        </a>
+      </nav>
+
+      <header class="head">
+        <div class="kicker">Digital Literacy · Touch Gestures</div>
+        <h1>Can You Use These Touch Gestures?</h1>
+        <p class="sub">
+          The hand movements that phones and tablets rely on — practice each one
+          right here. Do the gesture inside the shaded box and it will tell you
+          when you've got it.
+        </p>
+      </header>
+
+      <div class="scoreboard no-print" id="scoreboard">
+        <div class="gb-row">
+          <span class="gb-label">Gestures practiced</span>
+          <span class="gb-count"><span id="gb-done">0</span> <small>/ 6</small></span>
+        </div>
+        <div class="sb-footer">
+          <span class="sb-feedback" id="sb-feedback"
+            >Try each gesture below — the box turns green when you succeed.</span
+          >
+          <button type="button" class="sb-reset" id="sb-reset">Reset</button>
+        </div>
+      </div>
+
+      <div class="legend">
+        <span style="font-weight: 700; font-size: 13px">How it works:</span>
+        <span class="grp">
+          <span class="swatch try"></span> Do the gesture in the shaded box
+        </span>
+        <span class="grp">
+          <span class="swatch ok"></span> <b>Done ✓</b> — the box turns green
+        </span>
+        <span class="legend-hint">Tip: best on a phone or tablet screen.</span>
+      </div>
+
+      <section class="tier tier1">
+        <div class="tier-head">
+          <span class="tier-num">1</span>
+          <div>
+            <h2>Everyday Basics</h2>
+            <p>The gestures you'll use constantly, all day long.</p>
+          </div>
+          <span class="tier-count">3 gestures</span>
+        </div>
+        <div class="grid gesture-grid">
+          <!-- Tap -->
+          <div class="card gesture-card" data-gesture="tap">
+            <div class="gesture-icon">
+              <svg
+                class="ic"
+                width="40"
+                height="40"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M12 2v4" />
+                <path d="M5.2 6.2 8 9" />
+                <path d="M2 12h4" />
+                <path d="M16 9l2.8-2.8" />
+                <path d="m9 11 9 3-4 2-2 4-3-9z" />
+              </svg>
+            </div>
+            <div class="label">Tap</div>
+            <div class="desc">A quick touch to open or choose something.</div>
+            <div class="gz" data-zone="tap">
+              <span class="gz-hint">Tap this circle</span>
+              <span class="gz-target" id="tap-target" aria-hidden="true"></span>
+            </div>
+            <div class="gesture-status" data-status>Try it</div>
+          </div>
+
+          <!-- Scroll -->
+          <div class="card gesture-card" data-gesture="scroll">
+            <div class="gesture-icon">
+              <svg
+                class="ic"
+                width="40"
+                height="40"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M12 5v14" />
+                <path d="m6 13 6 6 6-6" />
+                <path d="m6 11 6-6 6 6" opacity="0.4" />
+              </svg>
+            </div>
+            <div class="label">Scroll</div>
+            <div class="desc">Slide up or down to see more of a page.</div>
+            <div class="gz gz-scroll" data-zone="scroll">
+              <div class="scroll-inner">
+                <p>Keep dragging upward…</p>
+                <p>Almost there…</p>
+                <p>A little more…</p>
+                <p>Nearly down…</p>
+                <p class="scroll-goal">⭐ You reached the bottom!</p>
+              </div>
+            </div>
+            <div class="gesture-status" data-status>Try it</div>
+          </div>
+
+          <!-- Swipe -->
+          <div class="card gesture-card" data-gesture="swipe">
+            <div class="gesture-icon">
+              <svg
+                class="ic"
+                width="40"
+                height="40"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M3 12h14" />
+                <path d="m13 6 6 6-6 6" />
+              </svg>
+            </div>
+            <div class="label">Swipe</div>
+            <div class="desc">Flick sideways to move between things.</div>
+            <div class="gz gz-swipe" data-zone="swipe">
+              <div class="swipe-card" id="swipe-card">Swipe me left or right →</div>
+            </div>
+            <div class="gesture-status" data-status>Try it</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="tier tier2">
+        <div class="tier-head">
+          <span class="tier-num">2</span>
+          <div>
+            <h2>Handy Extras</h2>
+            <p>A little more advanced, but useful to know.</p>
+          </div>
+          <span class="tier-count">3 gestures</span>
+        </div>
+        <div class="grid gesture-grid">
+          <!-- Touch & Hold -->
+          <div class="card gesture-card" data-gesture="hold">
+            <div class="gesture-icon">
+              <svg
+                class="ic"
+                width="40"
+                height="40"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="m9 11 9 3-4 2-2 4-3-9z" />
+                <circle cx="9" cy="6" r="3" opacity="0.4" />
+              </svg>
+            </div>
+            <div class="label">Touch &amp; Hold</div>
+            <div class="desc">Press and keep your finger down for a moment.</div>
+            <div class="gz" data-zone="hold">
+              <button type="button" class="hold-target" id="hold-target">
+                <span class="hold-fill" id="hold-fill"></span>
+                <span class="hold-text">Press &amp; hold</span>
+              </button>
+            </div>
+            <div class="gesture-status" data-status>Try it</div>
+          </div>
+
+          <!-- Double-Tap to Zoom -->
+          <div class="card gesture-card" data-gesture="doubletap">
+            <div class="gesture-icon">
+              <svg
+                class="ic"
+                width="40"
+                height="40"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="m9 11 9 3-4 2-2 4-3-9z" />
+                <path d="M14 4h6v6" opacity="0.5" />
+                <path d="M20 4l-5 5" opacity="0.5" />
+              </svg>
+            </div>
+            <div class="label">Double-Tap to Zoom</div>
+            <div class="desc">Two quick taps to zoom a picture in or out.</div>
+            <div class="gz gz-zoom" data-zone="doubletap">
+              <div class="zoom-box" id="doubletap-box">
+                <span class="gz-hint">Double-tap here</span>
+              </div>
+            </div>
+            <div class="gesture-status" data-status>Try it</div>
+          </div>
+
+          <!-- Pinch to Zoom -->
+          <div class="card gesture-card" data-gesture="pinch">
+            <div class="gesture-icon">
+              <svg
+                class="ic"
+                width="40"
+                height="40"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M3 7V3h4" />
+                <path d="M21 7V3h-4" />
+                <path d="M3 17v4h4" />
+                <path d="M21 17v4h-4" />
+                <path d="m7 7 4 4" />
+                <path d="m17 7-4 4" opacity="0.5" />
+              </svg>
+            </div>
+            <div class="label">Pinch to Zoom</div>
+            <div class="desc">Spread two fingers apart to zoom in.</div>
+            <div class="gz gz-zoom" data-zone="pinch">
+              <div class="zoom-box" id="pinch-box">
+                <span class="gz-hint">Pinch out with two fingers</span>
+              </div>
+              <div class="pinch-fallback" id="pinch-fallback" hidden>
+                <button type="button" data-pinch="out" aria-label="Zoom in">＋</button>
+                <button type="button" data-pinch="in" aria-label="Zoom out">－</button>
+              </div>
+            </div>
+            <div class="gesture-status" data-status>Try it</div>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <span>Practice as many times as you like — there's no wrong way to learn.</span>
+        <span>6 gestures · 2 groups</span>
+      </footer>
+    </div>
+    <script src="gestures.js"></script>
+  </body>
+</html>
