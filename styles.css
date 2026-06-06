@@ -111,18 +111,6 @@ h1 {
   border-radius: 50%;
   border: 2px solid;
 }
-.swatch.g {
-  border-color: var(--green);
-  background: rgba(31, 157, 87, 0.16);
-}
-.swatch.y {
-  border-color: var(--amber);
-  background: rgba(224, 144, 43, 0.18);
-}
-.swatch.r {
-  border-color: var(--red);
-  background: rgba(214, 72, 59, 0.15);
-}
 .tier {
   margin-bottom: 30px;
   break-inside: avoid;
@@ -253,39 +241,6 @@ h1 {
   margin-top: 3px;
   min-height: 30px;
 }
-.marks {
-  display: flex;
-  gap: 8px;
-  margin-top: 11px;
-  padding-top: 11px;
-  border-top: 1px dashed var(--line);
-  width: 100%;
-  justify-content: center;
-}
-.m {
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  border: 2px solid;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 11px;
-  font-weight: 700;
-}
-.m.g {
-  border-color: var(--green);
-  color: var(--green);
-}
-.m.y {
-  border-color: var(--amber);
-  color: var(--amber);
-}
-.m.r {
-  border-color: var(--red);
-  color: var(--red);
-}
-
 footer {
   margin-top: 30px;
   padding-top: 14px;
@@ -327,15 +282,6 @@ footer {
   }
   .no-print {
     display: none;
-  }
-  /* A printout should always show the full sheet, even mid-quiz. */
-  .reveal-btn {
-    display: none !important;
-  }
-  .ic.slot-hidden,
-  .label.slot-hidden,
-  .desc.slot-hidden {
-    display: block !important;
   }
 }
 
@@ -385,68 +331,6 @@ footer {
   color: #fff;
   background: var(--t1);
 }
-.shuffle-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  font-family: inherit;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--ink);
-  background: #fff;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  padding: 7px 14px;
-  cursor: pointer;
-  transition: background 0.15s, color 0.15s, border-color 0.15s;
-}
-.shuffle-btn svg {
-  flex: none;
-}
-.shuffle-btn:hover {
-  color: var(--t1);
-  border-color: var(--t1);
-  background: var(--paper);
-}
-.shuffle-btn:active {
-  transform: translateY(1px);
-}
-
-/* ===== Hidden slot + reveal button ===== */
-.slot-hidden {
-  display: none !important;
-}
-.reveal-btn {
-  font-family: inherit;
-  font-weight: 700;
-  color: var(--t1);
-  background: var(--t1bg);
-  border: 1.5px dashed var(--t1);
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background 0.15s, color 0.15s;
-}
-.reveal-btn:hover {
-  background: var(--t1);
-  color: #fff;
-}
-.reveal-btn[data-slot="icon"] {
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  font-size: 11px;
-  padding: 0;
-}
-.reveal-btn[data-slot="name"] {
-  margin-top: 10px;
-  font-size: 13px;
-  padding: 5px 12px;
-}
-.reveal-btn[data-slot="desc"] {
-  margin-top: 6px;
-  font-size: 11px;
-  padding: 4px 10px;
-}
 
 /* ===== Scoreboard ===== */
 .scoreboard {
@@ -459,57 +343,6 @@ footer {
   padding: 12px 16px;
   margin: 0 0 22px;
   box-shadow: 0 3px 12px rgba(35, 32, 27, 0.06);
-}
-.sb-grid {
-  display: grid;
-  grid-template-columns: 64px repeat(4, 1fr);
-  gap: 6px 12px;
-  align-items: center;
-}
-.sb-cell {
-  text-align: center;
-}
-.sb-corner,
-.sb-rowlabel {
-  text-align: left;
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--muted);
-}
-.sb-head {
-  font-size: 11.5px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--muted);
-  transition: color 0.15s;
-}
-.sb-score,
-.sb-total {
-  font-family: "Fraunces", Georgia, serif;
-  font-weight: 600;
-  font-size: 21px;
-  color: var(--ink);
-  transition: color 0.15s;
-}
-.sb-total {
-  color: var(--t1);
-}
-.sb-cell small {
-  font-family: "Libre Franklin", system-ui, sans-serif;
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--muted);
-}
-.sb-total-head {
-  color: var(--t1);
-}
-/* Active test-type column highlight */
-.sb-head.is-active {
-  color: var(--t1);
-}
-.sb-score.is-active {
-  color: var(--t1);
 }
 .sb-footer {
   display: flex;
@@ -542,54 +375,99 @@ footer {
   border-color: var(--red);
 }
 
-/* ===== Clickable G / Y / R marks ===== */
-.m {
-  cursor: default;
-  opacity: 0.45;
-  user-select: none;
-  transition: opacity 0.15s, background 0.15s, color 0.15s, transform 0.1s;
+/* ===== Icon Quiz ===== */
+.iq-card {
+  justify-content: flex-start;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
-body.scoring-active .m {
+.iq-card.correct {
+  border-color: var(--green);
+  box-shadow: 0 0 0 2px rgba(31, 157, 87, 0.18);
+}
+.iq-card.incorrect {
+  border-color: var(--red);
+  box-shadow: 0 0 0 2px rgba(214, 72, 59, 0.18);
+}
+.iq-q {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--muted);
+  margin-top: 12px;
+}
+.iq-choices {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  width: 100%;
+  margin-top: 10px;
+}
+.choice {
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 9px 12px;
   cursor: pointer;
+  text-align: center;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.choice:hover:not(:disabled) {
+  border-color: var(--ink);
+}
+.choice:disabled {
+  cursor: default;
+  opacity: 0.55;
+}
+.choice.is-truth {
+  opacity: 1;
+  border-color: var(--green);
+  color: var(--green);
+}
+.iq-card.correct .choice.chosen {
+  background: var(--green);
+  border-color: var(--green);
+  color: #fff;
   opacity: 1;
 }
-body.scoring-active .m:hover {
-  transform: translateY(-1px);
-}
-.m:focus-visible {
-  outline: 2px solid var(--t1);
-  outline-offset: 2px;
-}
-.m.selected.g {
-  background: var(--green);
-  color: #fff;
-}
-.m.selected.y {
-  background: var(--amber);
-  color: #fff;
-}
-.m.selected.r {
+.iq-card.incorrect .choice.chosen {
   background: var(--red);
+  border-color: var(--red);
   color: #fff;
+  opacity: 1;
 }
-
-/* Keep printed worksheets clean regardless of on-screen scoring. */
-@media print {
-  .m {
-    opacity: 1 !important;
-  }
-  .m.selected {
-    background: transparent !important;
-  }
-  .m.selected.g {
-    color: var(--green) !important;
-  }
-  .m.selected.y {
-    color: var(--amber) !important;
-  }
-  .m.selected.r {
-    color: var(--red) !important;
-  }
+.iq-verdict {
+  display: none;
+  width: 100%;
+  font-size: 13px;
+  font-weight: 700;
+  margin-top: 12px;
+}
+.iq-card.answered .iq-verdict {
+  display: block;
+}
+.iq-verdict.ok {
+  color: var(--green);
+}
+.iq-verdict.bad {
+  color: var(--red);
+}
+/* The name + description are the explanation — hidden until answered. */
+.iq-card .label,
+.iq-card .desc {
+  display: none;
+}
+.iq-card.answered .label {
+  display: block;
+  margin-top: 12px;
+  padding-top: 11px;
+  border-top: 1px dashed var(--line);
+}
+.iq-card.answered .desc {
+  display: block;
+  min-height: 0;
 }
 
 /* ===== Learning Resources home ===== */
