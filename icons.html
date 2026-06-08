@@ -45,6 +45,10 @@
       </header>
 
       <div class="scoreboard no-print" id="scoreboard">
+        <div class="sb-banner" id="sb-banner" hidden>
+          You're practicing the icons you missed. Get them all right to master
+          your icons!
+        </div>
         <div class="gb-row">
           <span class="gb-label">Correct</span>
           <span class="gb-count"><span id="gb-done">0</span> <small>/ 48</small></span>
@@ -53,6 +57,9 @@
           <span class="sb-feedback" id="sb-feedback"
             >Tap the answer that matches each icon.</span
           >
+          <button type="button" class="sb-practice" id="sb-practice" hidden>
+            Practice what I missed
+          </button>
           <button type="button" class="sb-reset" id="sb-reset">Reset</button>
         </div>
       </div>
@@ -1291,6 +1298,37 @@
         <span>48 icons · 3 tiers</span>
       </footer>
     </div>
+
+    <div class="modal-overlay no-print" id="result-modal" hidden>
+      <div
+        class="modal-card"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+      >
+        <button
+          type="button"
+          class="modal-close"
+          id="modal-close"
+          aria-label="Close this window"
+        >
+          &times;
+        </button>
+        <div class="modal-emoji" id="modal-emoji" aria-hidden="true">🎉</div>
+        <h2 class="modal-title" id="modal-title">Great job!</h2>
+        <p class="modal-score" id="modal-score">You got 0 out of 0</p>
+        <p class="modal-sub" id="modal-sub"></p>
+        <div class="modal-actions">
+          <button type="button" class="modal-btn primary" id="modal-practice">
+            Practice what I missed
+          </button>
+          <button type="button" class="modal-btn" id="modal-restart">
+            Start the test over
+          </button>
+        </div>
+      </div>
+    </div>
+
     <script src="icons.js"></script>
   </body>
 </html>
