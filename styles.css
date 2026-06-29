@@ -12,6 +12,8 @@
   --t3bg: #e8eef5;
   --t4: #6b4e8f;
   --t4bg: #efe9f4;
+  --t5: #117a72;
+  --t5bg: #e0efee;
   --green: #1f9d57;
   --amber: #e0902b;
   --red: #d6483b;
@@ -708,6 +710,10 @@ footer {
   --accent: var(--t4);
   --accent-bg: var(--t4bg);
 }
+.rc-pass {
+  --accent: var(--t5);
+  --accent-bg: var(--t5bg);
+}
 
 /* ===== Touch Gestures page ===== */
 /* Progress scoreboard (simpler than the icon sheet's grid) */
@@ -1170,4 +1176,233 @@ footer {
   color: var(--muted);
   line-height: 1.5;
   margin-top: 6px;
+}
+
+/* ===== Passwords & Account Safety page ===== */
+/* --- Try-it strength meter --- */
+.pw-tryit {
+  margin-bottom: 30px;
+}
+.pw-meter-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 18px 18px 20px;
+}
+.pw-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.pw-input-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.pw-input {
+  flex: 1;
+  min-width: 200px;
+  font-family: inherit;
+  font-size: 18px;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1.5px solid var(--line);
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+.pw-input:focus {
+  outline: none;
+  border-color: var(--t5);
+}
+.pw-sample-btn {
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--t5);
+  background: var(--t5bg);
+  border: 1px solid var(--t5);
+  border-radius: 10px;
+  padding: 10px 16px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: filter 0.15s;
+}
+.pw-sample-btn:hover {
+  filter: brightness(0.97);
+}
+.pw-bar {
+  height: 12px;
+  border-radius: 999px;
+  background: var(--line);
+  overflow: hidden;
+  margin: 16px 0 10px;
+}
+.pw-bar-fill {
+  height: 100%;
+  width: 0;
+  border-radius: 999px;
+  background: var(--muted);
+  transition: width 0.25s ease, background 0.25s ease;
+}
+.pw-bar-fill.weak {
+  background: var(--red);
+}
+.pw-bar-fill.fair {
+  background: var(--amber);
+}
+.pw-bar-fill.strong {
+  background: var(--green);
+}
+.pw-verdict {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--muted);
+}
+.pw-verdict.weak {
+  color: var(--red);
+}
+.pw-verdict.fair {
+  color: var(--amber);
+}
+.pw-verdict.strong {
+  color: var(--green);
+}
+.pw-checks {
+  list-style: none;
+  padding: 0;
+  margin: 14px 0 0;
+  display: grid;
+  gap: 8px;
+}
+.pw-checks li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--muted);
+}
+.pw-checks li::before {
+  content: "○";
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--line);
+  width: 18px;
+  text-align: center;
+  flex: none;
+}
+.pw-checks li.met {
+  color: var(--ink);
+}
+.pw-checks li.met::before {
+  content: "✓";
+  color: var(--green);
+}
+.pw-tip {
+  margin: 14px 0 0;
+  padding-top: 12px;
+  border-top: 1px dashed var(--line);
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.pw-privacy {
+  font-size: 12px;
+  color: var(--muted);
+  margin: 10px 0 0;
+}
+
+/* --- Do / Don't quiz cards --- */
+.pw-card {
+  align-items: stretch;
+  text-align: left;
+  justify-content: flex-start;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.pw-card.correct {
+  border-color: var(--green);
+  box-shadow: 0 0 0 2px rgba(31, 157, 87, 0.18);
+}
+.pw-card.incorrect {
+  border-color: var(--red);
+  box-shadow: 0 0 0 2px rgba(214, 72, 59, 0.18);
+}
+.pw-habit {
+  flex: 1;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+.pw-answers {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+.pw-btn {
+  flex: 1;
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 10px 10px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.pw-btn:hover:not(:disabled) {
+  border-color: var(--ink);
+}
+.pw-btn:disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+.pw-btn.chosen {
+  opacity: 1;
+}
+.pw-card.correct .pw-btn.chosen {
+  background: var(--green);
+  border-color: var(--green);
+  color: #fff;
+}
+.pw-card.incorrect .pw-btn.chosen {
+  background: var(--red);
+  border-color: var(--red);
+  color: #fff;
+}
+.pw-btn.is-truth {
+  opacity: 1;
+  border-color: var(--green);
+  color: var(--green);
+}
+.pw-explain {
+  display: none;
+  margin-top: 12px;
+  padding-top: 11px;
+  border-top: 1px dashed var(--line);
+}
+.pw-card.answered .pw-explain {
+  display: block;
+}
+.pw-verdict-q {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.pw-verdict-q.ok {
+  color: var(--green);
+}
+.pw-verdict-q.bad {
+  color: var(--red);
+}
+.pw-why {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
 }

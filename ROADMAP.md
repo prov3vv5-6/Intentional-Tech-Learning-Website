@@ -20,8 +20,9 @@ stylesheet (`styles.css`) and the sticky scoreboard + instant-feedback pattern.
       confusing terms (browser, app, Wi-Fi, cloud, download vs. upload, the
       address bar); auto-graded multiple choice with Easy/Medium/Hard and a
       practice-what-you-missed mode.
-- [ ] **Passwords & Account Safety** — spot weak vs. strong passwords, avoid
-      reuse, understand password managers; interactive strength meter + do/don't quiz.
+- [x] **Passwords & Account Safety** — `passwords.html` — spot weak vs. strong
+      passwords, avoid reuse, understand password managers; live strength meter
+      (rewards length + passphrases) plus a Good idea / Risky habits quiz.
 - [ ] **Video Call Basics** — join a call, mute/unmute, camera on/off. Also
       supports the coaching sessions, which run on Google Meet.
 
