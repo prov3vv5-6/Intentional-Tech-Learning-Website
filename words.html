@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tech Words Made Simple</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Libre+Franklin:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <nav class="topnav no-print">
+        <a class="back-link" href="index.html">
+          <svg
+            width="18"
+            height="18"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="m15 18-6-6 6-6" />
+          </svg>
+          <span>Home</span>
+        </a>
+      </nav>
+
+      <header class="head">
+        <div class="kicker">Digital Literacy · Tech Words Made Simple</div>
+        <h1>What Does That Word Mean?</h1>
+        <p class="sub">
+          App, browser, Wi-Fi, the cloud — the words around technology can feel
+          like a foreign language. Read each word, pick the meaning you think is
+          right, then see a plain-English explanation. No jargon, no pressure.
+        </p>
+      </header>
+
+      <div class="scoreboard no-print" id="scoreboard">
+        <div class="sb-banner" id="sb-banner" hidden>
+          You're practicing the words you missed. Get them all right to master
+          your tech words!
+        </div>
+        <div class="gb-row">
+          <span class="gb-label">Correct</span>
+          <span class="gb-count"><span id="gb-done">0</span> <small>/ 15</small></span>
+        </div>
+        <div class="sb-footer">
+          <span class="sb-feedback" id="sb-feedback"
+            >Tap the meaning that matches each word.</span
+          >
+          <button type="button" class="sb-practice" id="sb-practice" hidden>
+            Practice what I missed
+          </button>
+          <button type="button" class="sb-reset" id="sb-reset">Reset</button>
+        </div>
+      </div>
+
+      <div class="testbar no-print">
+        <span class="testbar-label">Difficulty:</span>
+        <div class="test-toggles">
+          <button type="button" class="test-toggle diff-toggle active" data-level="easy">
+            Easy
+          </button>
+          <button type="button" class="test-toggle diff-toggle" data-level="medium">
+            Medium
+          </button>
+          <button type="button" class="test-toggle diff-toggle" data-level="hard">
+            Hard
+          </button>
+        </div>
+        <span class="testbar-hint">Easy: pick the meaning · Hard: pick the word.</span>
+      </div>
+
+      <section class="tier tier1">
+        <div class="tier-head">
+          <span class="tier-num">1</span>
+          <div>
+            <h2>Everyday Basics</h2>
+            <p>The words you'll hear most — and what they really mean.</p>
+          </div>
+          <span class="tier-count">5 words</span>
+        </div>
+        <div class="grid gesture-grid">
+          <div
+            class="card tw-card"
+            data-term="App"
+            data-def="A program you tap to open and use"
+            data-more="Mail, Photos, the weather, a game — each app does one main job. Your home screen is full of them."
+          >
+            <div class="tw-prompt"></div>
+          </div>
+          <div
+            class="card tw-card"
+            data-term="Browser"
+            data-def="The app you use to visit websites"
+            data-more="Safari, Chrome, and Edge are all browsers. Think of it as your window onto the internet."
+          >
+            <div class="tw-prompt"></div>
+          </div>
+          <div
+            class="card tw-card"
+            data-term="Website"
+            data-def="A place on the internet you visit"
+            data-more="A shop, a newspaper, your bank — each website has its own address you can go to."
+          >
+            <div class="tw-prompt"></div>
+          </div>
+          <div
+            class="card tw-card"
+            data-term="Wi-Fi"
+            data-def="A wireless way to reach the internet"
+            data-more="It connects your device to the internet without any cables — at home, or at a café or library."
+          >
+            <div class="tw-prompt"></div>
+          </div>
+          <div
+            class="card tw-card"
+            data-term="The Internet"
+            data-def="The worldwide network that links everything"
+            data-more="It connects the world's devices and websites together so they can share information."
+          >
+            <div class="tw-prompt"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="tier tier2">
+        <div class="tier-head">
+          <span class="tier-num">2</span>
+          <div>
+            <h2>Getting Around</h2>
+            <p>Finding your way around websites and apps.</p>
+          </div>
+          <span class="tier-count">5 words</span>
+        </div>
+        <div class="grid gesture-grid">
+          <div
+            class="card tw-card"
+            data-term="Address Bar"
+            data-def="Where you type a website's address"
+            data-more="It's the long box at the very top of a browser. Type an address like google.com there and press go."
+          >
+            <div class="tw-prompt"></div>
+          </div>
+          <div
+            class="card tw-card"
+            data-term="Search Bar"
+            data-def="Where you type words to look something up"
+            data-more="Type what you're after — &ldquo;weather today&rdquo; or &ldquo;apple pie recipe&rdquo; — and it finds matches for you."
+          >
+            <div class="tw-prompt"></div>
+          </div>
+          <div
+            class="card tw-card"
+            data-term="Link"
+            data-def="Tappable text that jumps to another page"
+            data-more="Links are often blue or underlined. Tap one and it takes you somewhere new."
+          >
+            <div class="tw-prompt"></div>
+          </div>
+          <div
+            class="card tw-card"
+            data-term="Tab"
+            data-def="One open page among several"
+            data-more="Like pages in a notebook — each website sits in its own tab, so you can switch back and forth."
+          >
+            <div class="tw-prompt"></div>
+          </div>
+          <div
+            class="card tw-card"
+            data-term="Account"
+            data-def="Your personal space on a site or app"
+            data-more="You open it with a username and password. It remembers your details, settings, and history."
+          >
+            <div class="tw-prompt"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="tier tier3">
+        <div class="tier-head">
+          <span class="tier-num">3</span>
+          <div>
+            <h2>Files &amp; The Cloud</h2>
+            <p>Saving, sending, and keeping your things safe.</p>
+          </div>
+          <span class="tier-count">5 words</span>
+        </div>
+        <div class="grid gesture-grid">
+          <div
+            class="card tw-card"
+            data-term="Download"
+            data-def="Copy something from the internet to your device"
+            data-more="Saving a photo, an app, or a document onto your phone or computer so it's yours to keep."
+          >
+            <div class="tw-prompt"></div>
+          </div>
+          <div
+            class="card tw-card"
+            data-term="Upload"
+            data-def="Send something from your device to the internet"
+            data-more="The opposite of download — like posting a photo online or attaching a file to an email."
+          >
+            <div class="tw-prompt"></div>
+          </div>
+          <div
+            class="card tw-card"
+            data-term="The Cloud"
+            data-def="Storage that lives on the internet"
+            data-more="Your photos and files are kept safely online, so they're still there even if you lose your device."
+          >
+            <div class="tw-prompt"></div>
+          </div>
+          <div
+            class="card tw-card"
+            data-term="File"
+            data-def="A single saved item on your device"
+            data-more="A photo, a letter, a song — anything saved that you can open, share, or delete later."
+          >
+            <div class="tw-prompt"></div>
+          </div>
+          <div
+            class="card tw-card"
+            data-term="Password"
+            data-def="A secret word that proves an account is yours"
+            data-more="Keep it private and don't reuse it across sites. It's the key that locks and unlocks your account."
+          >
+            <div class="tw-prompt"></div>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <span>Don't try to memorize them all — knowing where to look it up is half the skill.</span>
+        <span>15 words · 3 groups</span>
+      </footer>
+    </div>
+
+    <div class="modal-overlay no-print" id="result-modal" hidden>
+      <div
+        class="modal-card"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+      >
+        <button
+          type="button"
+          class="modal-close"
+          id="modal-close"
+          aria-label="Close this window"
+        >
+          &times;
+        </button>
+        <div class="modal-emoji" id="modal-emoji" aria-hidden="true">🎉</div>
+        <h2 class="modal-title" id="modal-title">Great job!</h2>
+        <p class="modal-score" id="modal-score">You got 0 out of 0</p>
+        <p class="modal-sub" id="modal-sub"></p>
+        <div class="modal-actions">
+          <button type="button" class="modal-btn primary" id="modal-practice">
+            Practice what I missed
+          </button>
+          <button type="button" class="modal-btn" id="modal-restart">
+            Start the quiz over
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="words.js"></script>
+  </body>
+</html>

@@ -10,6 +10,8 @@
   --t2bg: #f6ebdd;
   --t3: #3f5b78;
   --t3bg: #e8eef5;
+  --t4: #6b4e8f;
+  --t4bg: #efe9f4;
   --green: #1f9d57;
   --amber: #e0902b;
   --red: #d6483b;
@@ -702,6 +704,10 @@ footer {
   --accent: var(--t2);
   --accent-bg: var(--t2bg);
 }
+.rc-words {
+  --accent: var(--t4);
+  --accent-bg: var(--t4bg);
+}
 
 /* ===== Touch Gestures page ===== */
 /* Progress scoreboard (simpler than the icon sheet's grid) */
@@ -1089,4 +1095,79 @@ footer {
   font-size: 13px;
   color: var(--muted);
   line-height: 1.5;
+}
+
+/* ===== Tech Words Made Simple page ===== */
+.tw-card {
+  align-items: stretch;
+  text-align: left;
+  justify-content: flex-start;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.tw-card.correct {
+  border-color: var(--green);
+  box-shadow: 0 0 0 2px rgba(31, 157, 87, 0.18);
+}
+.tw-card.incorrect {
+  border-color: var(--red);
+  box-shadow: 0 0 0 2px rgba(214, 72, 59, 0.18);
+}
+/* The word (or, in Hard mode, the meaning) you're being quizzed on. */
+.tw-prompt {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.1;
+  color: var(--t4);
+  background: var(--t4bg);
+  border-radius: 12px;
+  padding: 16px 16px;
+  text-align: center;
+}
+/* When the prompt is a meaning instead of a single word, ease it down a size. */
+.tw-prompt.is-def {
+  font-family: "Libre Franklin", system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.4;
+}
+/* Reuse the icon-quiz choice + verdict styling on these cards too. */
+.tw-card.correct .choice.chosen {
+  background: var(--green);
+  border-color: var(--green);
+  color: #fff;
+  opacity: 1;
+}
+.tw-card.incorrect .choice.chosen {
+  background: var(--red);
+  border-color: var(--red);
+  color: #fff;
+  opacity: 1;
+}
+/* The full glossary entry, revealed once the card is answered. */
+.tw-reveal {
+  display: none;
+  margin-top: 12px;
+  padding-top: 11px;
+  border-top: 1px dashed var(--line);
+}
+.tw-card.answered .tw-reveal {
+  display: block;
+}
+.tw-reveal-term {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--ink);
+}
+.tw-reveal-def {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--t4);
+  margin-top: 2px;
+}
+.tw-reveal-more {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
+  margin-top: 6px;
 }
