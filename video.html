@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Video Call Basics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Libre+Franklin:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <nav class="topnav no-print">
+        <a class="back-link" href="index.html">
+          <svg
+            width="18"
+            height="18"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="m15 18-6-6 6-6" />
+          </svg>
+          <span>Home</span>
+        </a>
+      </nav>
+
+      <header class="head">
+        <div class="kicker">Digital Literacy · Video Call Basics</div>
+        <h1>Joining a Video Call</h1>
+        <p class="sub">
+          Video calls are how the coaching sessions happen — on Google Meet. The
+          three buttons that matter most are the microphone, the camera, and the
+          red Leave button. Practice them below on a pretend call, then try a
+          short quiz. Nothing here is a real call.
+        </p>
+      </header>
+
+      <div class="scoreboard no-print" id="scoreboard">
+        <div class="sb-banner" id="sb-banner" hidden>
+          You're practicing the questions you missed. Get them all right to
+          master the basics!
+        </div>
+        <div class="gb-row">
+          <span class="gb-label">Quiz score</span>
+          <span class="gb-count"><span id="gb-done">0</span> <small>/ 6</small></span>
+        </div>
+        <div class="sb-footer">
+          <span class="sb-feedback" id="sb-feedback"
+            >Practice the call below, then answer the quiz questions.</span
+          >
+          <button type="button" class="sb-practice" id="sb-practice" hidden>
+            Practice what I missed
+          </button>
+          <button type="button" class="sb-reset" id="sb-reset">Reset quiz</button>
+        </div>
+      </div>
+
+      <section class="vc-tryit">
+        <div class="tier-head" style="background: var(--t6bg)">
+          <span class="tier-num" style="background: var(--t6)">★</span>
+          <div>
+            <h2 style="color: var(--t6)">Try It: A Pretend Video Call</h2>
+            <p>Use the buttons to mute, turn your camera off and on, and leave.</p>
+          </div>
+        </div>
+
+        <div class="vc-stage" id="vc-stage">
+          <!-- The other person (your coach) -->
+          <div class="vc-remote">
+            <div class="vc-avatar">C</div>
+            <div class="vc-who">Your coach</div>
+          </div>
+
+          <!-- Your own little self-view -->
+          <div class="vc-self cam-on" id="vc-self">
+            <span class="vc-mute-badge" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="2" x2="22" y1="2" y2="22" />
+                <path d="M9 9v3a3 3 0 0 0 5.12 2.12" />
+                <path d="M15 9.34V5a3 3 0 0 0-5.68-1.33" />
+              </svg>
+            </span>
+            <div class="vc-avatar">Y</div>
+            <span class="vc-self-label" id="vc-self-label">You</span>
+          </div>
+
+          <!-- Shown after you leave -->
+          <div class="vc-ended" id="vc-ended">
+            <div class="vc-ended-title">You've left the call</div>
+            <p style="margin: 0; font-size: 14px; color: #cfd3de">
+              That's exactly how you hang up. Want to go back in and keep
+              practicing?
+            </p>
+            <button type="button" class="vc-rejoin" id="vc-rejoin">Rejoin the call</button>
+          </div>
+        </div>
+
+        <div class="vc-bar no-print">
+          <div class="vc-ctrl-wrap">
+            <button type="button" class="vc-ctrl" id="vc-mic" aria-label="Toggle microphone">
+              <svg class="ic-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 19v3" />
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+                <rect x="9" y="2" width="6" height="13" rx="3" />
+              </svg>
+              <svg class="ic-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="2" x2="22" y1="2" y2="22" />
+                <path d="M18.89 13.23A7.12 7.12 0 0 0 19 12v-2" />
+                <path d="M5 10v2a7 7 0 0 0 12 5" />
+                <path d="M15 9.34V5a3 3 0 0 0-5.68-1.33" />
+                <path d="M9 9v3a3 3 0 0 0 5.12 2.12" />
+                <line x1="12" x2="12" y1="19" y2="22" />
+              </svg>
+            </button>
+            <span class="vc-ctrl-label" id="vc-mic-label">Mute</span>
+          </div>
+
+          <div class="vc-ctrl-wrap">
+            <button type="button" class="vc-ctrl" id="vc-cam" aria-label="Toggle camera">
+              <svg class="ic-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m16 13 5.223 3.482a.5.5 0 0 0 .777-.416V7.87a.5.5 0 0 0-.752-.432L16 10.5" />
+                <rect x="2" y="6" width="14" height="12" rx="2" />
+              </svg>
+              <svg class="ic-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M10.66 6H14a2 2 0 0 1 2 2v2.5l5.248-3.062A.5.5 0 0 1 22 7.87v8.196" />
+                <path d="M16 16a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h2" />
+                <line x1="2" x2="22" y1="2" y2="22" />
+              </svg>
+            </button>
+            <span class="vc-ctrl-label" id="vc-cam-label">Stop video</span>
+          </div>
+
+          <div class="vc-ctrl-wrap">
+            <button type="button" class="vc-ctrl leave" id="vc-leave">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" />
+              </svg>
+              <span>Leave</span>
+            </button>
+            <span class="vc-ctrl-label">Hang up</span>
+          </div>
+        </div>
+
+        <div class="vc-status" id="vc-status">
+          You're in the call and everyone can see and hear you. Try each button —
+          watch how it changes.
+        </div>
+        <ul class="vc-tasks">
+          <li data-task="mute">Mute your microphone</li>
+          <li data-task="unmute">Unmute so you can talk again</li>
+          <li data-task="camoff">Turn your camera off</li>
+          <li data-task="camon">Turn your camera back on</li>
+          <li data-task="leave">Leave the call (the red button)</li>
+        </ul>
+      </section>
+
+      <div class="legend">
+        <span style="font-weight: 700; font-size: 13px">The quiz:</span>
+        <span class="grp">Read the situation</span>
+        <span class="grp">Pick the best thing to do</span>
+        <span class="grp">Read why — then you're ready for a real call</span>
+      </div>
+
+      <section class="tier tier1">
+        <div class="tier-head">
+          <span class="tier-num">1</span>
+          <div>
+            <h2>Getting Into the Call</h2>
+            <p>Joining the coaching session when it's time.</p>
+          </div>
+          <span class="tier-count">3 questions</span>
+        </div>
+        <div class="grid gesture-grid">
+          <!-- Q1 -->
+          <div class="card vcq-card" data-answer="1">
+            <div class="vcq-q">
+              It's time for your coaching session on Google Meet. How do you join?
+            </div>
+            <div class="iq-choices">
+              <button type="button" class="choice">Search Google for your coach's name</button>
+              <button type="button" class="choice">Tap the link in your email or calendar invite</button>
+              <button type="button" class="choice">Turn your phone off and back on</button>
+            </div>
+            <div class="vcq-explain">
+              <span class="vcq-verdict"></span>
+              <span class="vcq-why">
+                The invite has a link — tap it at the start time and it opens the
+                call. If you can't find it, ask your coach to text or email it again.
+              </span>
+            </div>
+          </div>
+
+          <!-- Q2 -->
+          <div class="card vcq-card" data-answer="0">
+            <div class="vcq-q">
+              A box pops up asking to use your microphone and camera. What should
+              you do?
+            </div>
+            <div class="iq-choices">
+              <button type="button" class="choice">Tap “Allow” — Meet needs them so you can be seen and heard</button>
+              <button type="button" class="choice">Tap “Block” to stay safe</button>
+              <button type="button" class="choice">Close the page and try later</button>
+            </div>
+            <div class="vcq-explain">
+              <span class="vcq-verdict"></span>
+              <span class="vcq-why">
+                This is normal and safe for a video call — without it, no one can
+                see or hear you. You can always mute or stop your video once
+                you're in.
+              </span>
+            </div>
+          </div>
+
+          <!-- Q3 -->
+          <div class="card vcq-card" data-answer="2">
+            <div class="vcq-q">
+              The screen says “Ask to join” and then “Waiting for the host.” Is
+              something wrong?
+            </div>
+            <div class="iq-choices">
+              <button type="button" class="choice">Yes — your password must be wrong</button>
+              <button type="button" class="choice">Yes — the call is broken, start over</button>
+              <button type="button" class="choice">No — just wait a moment; the coach will let you in</button>
+            </div>
+            <div class="vcq-explain">
+              <span class="vcq-verdict"></span>
+              <span class="vcq-why">
+                This is completely normal. The coach simply admits you into the
+                call. Sit tight for a few seconds — there's nothing to fix.
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="tier tier2">
+        <div class="tier-head">
+          <span class="tier-num">2</span>
+          <div>
+            <h2>Once You're In</h2>
+            <p>The handful of buttons you'll actually use during a call.</p>
+          </div>
+          <span class="tier-count">3 questions</span>
+        </div>
+        <div class="grid gesture-grid">
+          <!-- Q4 -->
+          <div class="card vcq-card" data-answer="1">
+            <div class="vcq-q">
+              The coach says “I can't hear you.” The microphone button is red with
+              a line through it. What does that mean, and what do you do?
+            </div>
+            <div class="iq-choices">
+              <button type="button" class="choice">It means the call dropped — hang up and rejoin</button>
+              <button type="button" class="choice">You're muted — tap the microphone button once to unmute</button>
+              <button type="button" class="choice">Your camera is off — tap the camera button</button>
+            </div>
+            <div class="vcq-explain">
+              <span class="vcq-verdict"></span>
+              <span class="vcq-why">
+                A red microphone with a line through it means you're muted. One
+                tap turns it back on so the coach can hear you.
+              </span>
+            </div>
+          </div>
+
+          <!-- Q5 -->
+          <div class="card vcq-card" data-answer="2">
+            <div class="vcq-q">
+              Someone comes to the door and you need a moment where you're not on
+              camera. What's the easiest thing to do?
+            </div>
+            <div class="iq-choices">
+              <button type="button" class="choice">End the whole call</button>
+              <button type="button" class="choice">Close the laptop completely</button>
+              <button type="button" class="choice">Tap the camera button to turn your video off for a bit</button>
+            </div>
+            <div class="vcq-explain">
+              <span class="vcq-verdict"></span>
+              <span class="vcq-why">
+                Turning the camera off pauses your video without leaving the call.
+                Tap it again when you're ready to be seen. You can mute too, if
+                you like.
+              </span>
+            </div>
+          </div>
+
+          <!-- Q6 -->
+          <div class="card vcq-card" data-answer="0">
+            <div class="vcq-q">
+              The session is over and you're ready to go. How do you leave the
+              call properly?
+            </div>
+            <div class="iq-choices">
+              <button type="button" class="choice">Tap the red phone button</button>
+              <button type="button" class="choice">Just walk away from the screen</button>
+              <button type="button" class="choice">Turn off your internet</button>
+            </div>
+            <div class="vcq-explain">
+              <span class="vcq-verdict"></span>
+              <span class="vcq-why">
+                The red phone button hangs up cleanly and closes the call. Walking
+                away leaves you connected, so always tap it to finish.
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <span>The big three on every call: the microphone, the camera, and the red Leave button.</span>
+        <span>6 questions · 2 groups</span>
+      </footer>
+    </div>
+
+    <div class="modal-overlay no-print" id="result-modal" hidden>
+      <div
+        class="modal-card"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+      >
+        <button
+          type="button"
+          class="modal-close"
+          id="modal-close"
+          aria-label="Close this window"
+        >
+          &times;
+        </button>
+        <div class="modal-emoji" id="modal-emoji" aria-hidden="true">🎉</div>
+        <h2 class="modal-title" id="modal-title">Great job!</h2>
+        <p class="modal-score" id="modal-score">You got 0 out of 0</p>
+        <p class="modal-sub" id="modal-sub"></p>
+        <div class="modal-actions">
+          <button type="button" class="modal-btn primary" id="modal-practice">
+            Practice what I missed
+          </button>
+          <button type="button" class="modal-btn" id="modal-restart">
+            Start the quiz over
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="video.js"></script>
+  </body>
+</html>

@@ -14,6 +14,8 @@
   --t4bg: #efe9f4;
   --t5: #117a72;
   --t5bg: #e0efee;
+  --t6: #a83d72;
+  --t6bg: #f6e6ef;
   --green: #1f9d57;
   --amber: #e0902b;
   --red: #d6483b;
@@ -714,6 +716,10 @@ footer {
   --accent: var(--t5);
   --accent-bg: var(--t5bg);
 }
+.rc-video {
+  --accent: var(--t6);
+  --accent-bg: var(--t6bg);
+}
 
 /* ===== Touch Gestures page ===== */
 /* Progress scoreboard (simpler than the icon sheet's grid) */
@@ -1402,6 +1408,321 @@ footer {
   color: var(--red);
 }
 .pw-why {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* ===== Video Call Basics page ===== */
+.vc-tryit {
+  margin-bottom: 30px;
+}
+/* The mock call window */
+.vc-stage {
+  position: relative;
+  background: #11141b;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  min-height: 280px;
+  display: flex;
+}
+.vc-remote {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: #e8eaf0;
+  background: radial-gradient(circle at 50% 38%, #2a2f3d 0%, #11141b 72%);
+}
+.vc-avatar {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 600;
+  font-size: 30px;
+  color: #fff;
+  background: var(--t6);
+}
+.vc-remote .vc-who {
+  font-size: 14px;
+  font-weight: 600;
+  color: #cfd3de;
+}
+/* Self-view tile, tucked in the corner like a real call */
+.vc-self {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  width: 124px;
+  height: 92px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: #1b2030;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: #cfd3de;
+}
+.vc-self.cam-on {
+  background: linear-gradient(135deg, var(--t6) 0%, #3a4150 100%);
+  color: #fff;
+}
+.vc-self .vc-avatar {
+  width: 40px;
+  height: 40px;
+  font-size: 17px;
+  background: rgba(255, 255, 255, 0.18);
+}
+.vc-self-label {
+  font-size: 11.5px;
+  font-weight: 600;
+}
+/* Little red "you're muted" badge on the self tile */
+.vc-mute-badge {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--red);
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.vc-mute-badge svg {
+  width: 13px;
+  height: 13px;
+  color: #fff;
+}
+.vc-self.mic-off .vc-mute-badge {
+  display: flex;
+}
+/* "You left the call" overlay */
+.vc-ended {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 12, 16, 0.92);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  text-align: center;
+  padding: 20px;
+  color: #e8eaf0;
+}
+.vc-stage.ended .vc-ended {
+  display: flex;
+}
+.vc-ended-title {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 22px;
+  font-weight: 600;
+}
+.vc-rejoin {
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  background: var(--t6);
+  border: 0;
+  border-radius: 999px;
+  padding: 11px 24px;
+  cursor: pointer;
+  transition: filter 0.15s;
+}
+.vc-rejoin:hover {
+  filter: brightness(1.08);
+}
+
+/* Control bar */
+.vc-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 14px;
+}
+.vc-ctrl-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.vc-ctrl {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s, filter 0.15s;
+}
+.vc-ctrl svg {
+  width: 24px;
+  height: 24px;
+}
+/* Each toggle button holds both icons; show the one matching its state. */
+.vc-ctrl .ic-off {
+  display: none;
+}
+.vc-ctrl.is-off .ic-on {
+  display: none;
+}
+.vc-ctrl.is-off .ic-off {
+  display: block;
+}
+.vc-ctrl:hover:not(:disabled) {
+  border-color: var(--ink);
+}
+/* "Off" state for mic + camera — red, like the real apps */
+.vc-ctrl.is-off {
+  background: var(--red);
+  border-color: var(--red);
+  color: #fff;
+}
+.vc-ctrl.leave {
+  width: auto;
+  padding: 0 24px;
+  border-radius: 999px;
+  background: var(--red);
+  border-color: var(--red);
+  color: #fff;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  gap: 8px;
+}
+.vc-ctrl.leave:hover:not(:disabled) {
+  filter: brightness(1.06);
+  border-color: var(--red);
+}
+.vc-ctrl:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.vc-ctrl-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+/* Status + task checklist under the call */
+.vc-status {
+  margin-top: 16px;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--ink);
+  text-align: center;
+}
+.vc-status.done {
+  color: var(--green);
+}
+.vc-tasks {
+  list-style: none;
+  padding: 0;
+  margin: 14px auto 0;
+  max-width: 360px;
+  display: grid;
+  gap: 8px;
+}
+.vc-tasks li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--muted);
+}
+.vc-tasks li::before {
+  content: "○";
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--line);
+  width: 18px;
+  text-align: center;
+  flex: none;
+}
+.vc-tasks li.met {
+  color: var(--ink);
+}
+.vc-tasks li.met::before {
+  content: "✓";
+  color: var(--green);
+}
+
+/* --- Scenario quiz cards --- */
+.vcq-card {
+  align-items: stretch;
+  text-align: left;
+  justify-content: flex-start;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.vcq-card.correct {
+  border-color: var(--green);
+  box-shadow: 0 0 0 2px rgba(31, 157, 87, 0.18);
+}
+.vcq-card.incorrect {
+  border-color: var(--red);
+  box-shadow: 0 0 0 2px rgba(214, 72, 59, 0.18);
+}
+.vcq-q {
+  font-size: 14.5px;
+  font-weight: 700;
+  line-height: 1.45;
+  color: var(--ink);
+}
+.vcq-card .iq-choices {
+  margin-top: 12px;
+}
+.vcq-card.correct .choice.chosen {
+  background: var(--green);
+  border-color: var(--green);
+  color: #fff;
+  opacity: 1;
+}
+.vcq-card.incorrect .choice.chosen {
+  background: var(--red);
+  border-color: var(--red);
+  color: #fff;
+  opacity: 1;
+}
+.vcq-explain {
+  display: none;
+  margin-top: 12px;
+  padding-top: 11px;
+  border-top: 1px dashed var(--line);
+}
+.vcq-card.answered .vcq-explain {
+  display: block;
+}
+.vcq-verdict {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.vcq-verdict.ok {
+  color: var(--green);
+}
+.vcq-verdict.bad {
+  color: var(--red);
+}
+.vcq-why {
   font-size: 13px;
   color: var(--muted);
   line-height: 1.5;

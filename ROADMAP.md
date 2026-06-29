@@ -23,8 +23,10 @@ stylesheet (`styles.css`) and the sticky scoreboard + instant-feedback pattern.
 - [x] **Passwords & Account Safety** — `passwords.html` — spot weak vs. strong
       passwords, avoid reuse, understand password managers; live strength meter
       (rewards length + passphrases) plus a Good idea / Risky habits quiz.
-- [ ] **Video Call Basics** — join a call, mute/unmute, camera on/off. Also
-      supports the coaching sessions, which run on Google Meet.
+- [x] **Video Call Basics** — `video.html` — join a call, mute/unmute, camera
+      on/off. A pretend Google Meet–style call to practice the controls hands-on,
+      plus a what-should-you-do quiz with practice-what-you-missed mode. Supports
+      the coaching sessions, which run on Google Meet.
 
 ## More ideas (later)
 
