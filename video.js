@@ -14,6 +14,8 @@
   const micLabel = document.getElementById("vc-mic-label");
   const camBtn = document.getElementById("vc-cam");
   const camLabel = document.getElementById("vc-cam-label");
+  const shareBtn = document.getElementById("vc-share");
+  const shareLabel = document.getElementById("vc-share-label");
   const leaveBtn = document.getElementById("vc-leave");
   const rejoinBtn = document.getElementById("vc-rejoin");
   const statusEl = document.getElementById("vc-status");
@@ -25,6 +27,7 @@
 
   let micOn = true;
   let camOn = true;
+  let sharing = false;
   let inCall = true;
   const tasksDone = new Set();
 
@@ -70,9 +73,17 @@
     selfLabel.textContent = on ? "You" : "Camera off";
   }
 
+  function setShare(on) {
+    sharing = on;
+    shareBtn.classList.toggle("presenting", on);
+    shareLabel.textContent = on ? "Stop sharing" : "Present now";
+    stage.classList.toggle("presenting", on);
+  }
+
   function setControlsEnabled(on) {
     micBtn.disabled = !on;
     camBtn.disabled = !on;
+    shareBtn.disabled = !on;
     leaveBtn.disabled = !on;
   }
 
@@ -90,9 +101,17 @@
     markTask(next ? "camon" : "camoff");
   });
 
+  shareBtn.addEventListener("click", () => {
+    if (!inCall) return;
+    const next = !sharing;
+    setShare(next);
+    markTask(next ? "share" : "stopshare");
+  });
+
   leaveBtn.addEventListener("click", () => {
     if (!inCall) return;
     inCall = false;
+    setShare(false); // presenting stops when you hang up
     stage.classList.add("ended");
     setControlsEnabled(false);
     markTask("leave");
@@ -102,9 +121,10 @@
     inCall = true;
     stage.classList.remove("ended");
     setControlsEnabled(true);
-    // Come back the normal way — unmuted and on camera — but keep progress.
+    // Come back the normal way — unmuted, on camera, not presenting — but keep progress.
     setMic(true);
     setCam(true);
+    setShare(false);
     updateCallStatus();
   });
 

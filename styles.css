@@ -1417,17 +1417,21 @@ footer {
 .vc-tryit {
   margin-bottom: 30px;
 }
-/* The mock call window */
+/* The mock call window — Google Meet style: dark stage, connected control bar */
 .vc-stage {
   position: relative;
-  background: #11141b;
+  background: #202124;
   border: 1px solid var(--line);
-  border-radius: 14px;
+  border-bottom: none;
+  border-radius: 14px 14px 0 0;
   overflow: hidden;
-  min-height: 280px;
+  min-height: 300px;
   display: flex;
+  padding: 10px;
+  gap: 10px;
 }
 .vc-remote {
+  position: relative;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -1435,7 +1439,45 @@ footer {
   justify-content: center;
   gap: 12px;
   color: #e8eaf0;
-  background: radial-gradient(circle at 50% 38%, #2a2f3d 0%, #11141b 72%);
+  border-radius: 10px;
+  background: radial-gradient(circle at 50% 38%, #3c4043 0%, #202124 74%);
+}
+/* Name pill in the corner of a tile, like Meet */
+.vc-name {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 8px;
+}
+/* Banner shown across the top while you're presenting */
+.vc-present-banner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--t6);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+  padding: 8px 12px;
+}
+.vc-present-banner svg {
+  width: 16px;
+  height: 16px;
+}
+.vc-stage.presenting .vc-present-banner {
+  display: flex;
 }
 .vc-avatar {
   width: 76px;
@@ -1450,16 +1492,12 @@ footer {
   color: #fff;
   background: var(--t6);
 }
-.vc-remote .vc-who {
-  font-size: 14px;
-  font-weight: 600;
-  color: #cfd3de;
-}
 /* Self-view tile, tucked in the corner like a real call */
 .vc-self {
   position: absolute;
-  right: 12px;
-  bottom: 12px;
+  z-index: 2;
+  right: 18px;
+  bottom: 18px;
   width: 124px;
   height: 92px;
   border-radius: 10px;
@@ -1546,13 +1584,19 @@ footer {
   filter: brightness(1.08);
 }
 
-/* Control bar */
+/* Control bar — a dark strip attached under the stage, like Meet */
 .vc-bar {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 18px;
-  margin-top: 14px;
+  align-items: flex-start;
+  gap: 16px;
+  margin-top: 0;
+  padding: 16px 16px 18px;
+  background: #2c2d30;
+  border: 1px solid var(--line);
+  border-top: none;
+  border-radius: 0 0 14px 14px;
 }
 .vc-ctrl-wrap {
   display: flex;
@@ -1596,6 +1640,16 @@ footer {
   border-color: var(--red);
   color: #fff;
 }
+/* Active "you're presenting" state for the share-screen button */
+.vc-ctrl.presenting {
+  background: var(--t6);
+  border-color: var(--t6);
+  color: #fff;
+}
+.vc-ctrl.presenting:hover:not(:disabled) {
+  filter: brightness(1.06);
+  border-color: var(--t6);
+}
 .vc-ctrl.leave {
   width: auto;
   padding: 0 24px;
@@ -1619,7 +1673,7 @@ footer {
 .vc-ctrl-label {
   font-size: 12px;
   font-weight: 600;
-  color: var(--muted);
+  color: #c4c7cf;
 }
 
 /* Status + task checklist under the call */

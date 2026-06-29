@@ -52,7 +52,7 @@
         </div>
         <div class="gb-row">
           <span class="gb-label">Quiz score</span>
-          <span class="gb-count"><span id="gb-done">0</span> <small>/ 6</small></span>
+          <span class="gb-count"><span id="gb-done">0</span> <small>/ 7</small></span>
         </div>
         <div class="sb-footer">
           <span class="sb-feedback" id="sb-feedback"
@@ -75,10 +75,22 @@
         </div>
 
         <div class="vc-stage" id="vc-stage">
+          <!-- Banner shown while you're presenting your screen -->
+          <div class="vc-present-banner" id="vc-present-banner">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M13 3H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-3" />
+              <path d="M8 21h8" />
+              <path d="M12 17v4" />
+              <path d="m17 8 5-5" />
+              <path d="M17 3h5v5" />
+            </svg>
+            <span>You are presenting your screen to everyone</span>
+          </div>
+
           <!-- The other person (your coach) -->
           <div class="vc-remote">
             <div class="vc-avatar">C</div>
-            <div class="vc-who">Your coach</div>
+            <span class="vc-name">Your coach</span>
           </div>
 
           <!-- Your own little self-view -->
@@ -141,6 +153,19 @@
           </div>
 
           <div class="vc-ctrl-wrap">
+            <button type="button" class="vc-ctrl" id="vc-share" aria-label="Share your screen">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M13 3H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-3" />
+                <path d="M8 21h8" />
+                <path d="M12 17v4" />
+                <path d="m17 8 5-5" />
+                <path d="M17 3h5v5" />
+              </svg>
+            </button>
+            <span class="vc-ctrl-label" id="vc-share-label">Present now</span>
+          </div>
+
+          <div class="vc-ctrl-wrap">
             <button type="button" class="vc-ctrl leave" id="vc-leave">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" />
@@ -160,6 +185,8 @@
           <li data-task="unmute">Unmute so you can talk again</li>
           <li data-task="camoff">Turn your camera off</li>
           <li data-task="camon">Turn your camera back on</li>
+          <li data-task="share">Share your screen (Present now)</li>
+          <li data-task="stopshare">Stop sharing your screen</li>
           <li data-task="leave">Leave the call (the red button)</li>
         </ul>
       </section>
@@ -250,7 +277,7 @@
             <h2>Once You're In</h2>
             <p>The handful of buttons you'll actually use during a call.</p>
           </div>
-          <span class="tier-count">3 questions</span>
+          <span class="tier-count">4 questions</span>
         </div>
         <div class="grid gesture-grid">
           <!-- Q4 -->
@@ -295,6 +322,27 @@
           </div>
 
           <!-- Q6 -->
+          <div class="card vcq-card" data-answer="1">
+            <div class="vcq-q">
+              The coach asks, “Can you show me what you're seeing on your screen?”
+              What do you do?
+            </div>
+            <div class="iq-choices">
+              <button type="button" class="choice">Hold your phone up to the camera</button>
+              <button type="button" class="choice">Tap “Present now” (the share-screen button), then pick your screen</button>
+              <button type="button" class="choice">Email them a photo after the call</button>
+            </div>
+            <div class="vcq-explain">
+              <span class="vcq-verdict"></span>
+              <span class="vcq-why">
+                Sharing your screen lets the coach see exactly what's on your
+                device, so they can guide you step by step. Tap “Present now,”
+                choose your screen, and tap it again to stop when you're done.
+              </span>
+            </div>
+          </div>
+
+          <!-- Q7 -->
           <div class="card vcq-card" data-answer="0">
             <div class="vcq-q">
               The session is over and you're ready to go. How do you leave the
@@ -318,7 +366,7 @@
 
       <footer>
         <span>The big three on every call: the microphone, the camera, and the red Leave button.</span>
-        <span>6 questions · 2 groups</span>
+        <span>7 questions · 2 groups</span>
       </footer>
     </div>
 
